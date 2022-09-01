@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="container align-content-center">
+		<h1>Università di Roma</h1>
+		<h4>Elenco corsi</h4>
+		<a role="button" class="btn btn-success" href="/universitaroma/course/courseform">Aggiungi corso</a>
+		<a role="button" class="btn btn-dark" href="/universitaroma/index">Torna alla home</a>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Codice</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Indirizzo</th>
+				<th scope="col">Numero di esami</th>
+				<th scope="col">Operazione</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="course:${courseList}">
+				<td th:text="${course.getId}"></td>
+				<td th:text="${course.getDegreeName}"></td>
+				<td th:text="${course.getDegreeAddress}"></td>
+				<td th:text="${course.getNumberOfExams}"></td>
+				<td>
+					<a type="button" class="btn btn-warning"
+						th:href="@{/universitaroma/course/updatecourseform/{id} (id=${course.getId})}">Modifica</a>
+					<a type="button" class="btn btn-danger"
+						th:href="@{/universitaroma/course/delete/{id} (id=${course.getId})}" onclick="return confirm('Confermi di voler eliminare lo studente?')">Elimina</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+
+</html>
