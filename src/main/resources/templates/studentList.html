@@ -40,7 +40,7 @@
 				<td th:text="${student.getName}"></td>
 				<td th:text="${student.getLastname}"></td>
 				<td th:text="${student.getAddress}"></td>
-				<td th:text="${student.getDegreeCourse}"></td>
+				<td th:text="${student.getDegreeCourse.getDegreeName}"></td>
 				<td>
 					<a type="button" class="btn btn-warning"
 						th:href="@{/universitaroma/student/updatestudentform/{id} (id=${student.getStudentId})}">Modifica</a>
